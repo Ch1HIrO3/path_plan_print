@@ -1,0 +1,14 @@
+.wrapper{
+  width: 100vw;
+  height: 100vh;
+}
+.container{
+  max-width: 375px;
+  max-height: 667px;
+  margin:0 auto;
+  background-color: #fff;
+}
+.btn-group{
+  display: flex;
+  justify-content: space-around;
+}

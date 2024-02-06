@@ -3,12 +3,17 @@
   height: 100vh;
 }
 .container{
-  max-width: 375px;
-  max-height: 667px;
+  max-width: 640px;
   margin:0 auto;
+  padding: 50px;
   background-color: #fff;
 }
 .btn-group{
   display: flex;
   justify-content: space-around;
+}
+.form-group{
+  display: block;
+  width: 100%;
+  margin:10px;
 }

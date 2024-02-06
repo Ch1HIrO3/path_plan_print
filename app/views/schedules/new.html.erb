@@ -1,22 +1,22 @@
 <div class="wrapper">
   <div class="container">
-    <form action="">
-      <%= form_with do |form| %>
-        <%= form.text_field :hoge, placeholder: "プラン名" %>
-      <% end %>
-      <h1>概要</h1>
-      <%= form_with url:"#" do |form| %>
-        <%= form.text_field :hoge, placeholder: "例）持ち物・参加者名" %>
-        <%= form.text_area :hoge, placeholder: "内容" %>
-        <%= form.submit "概要追加" %>
-      <% end %>
-      <%= form_with url:"#" do |form| %>
-      <h1>プラン</h1>
-        <%= form.date_field :hoge, placeholder: "" %>
-        <%= form.time_field :hoge, placeholder: "" %>
-        <%= form.text_field :hoge, placeholder: "タイトル" %>
-        <%= form.text_area :hoge, placeholder: "説明" %>
-        <%= form.submit "プラン追加" %>
-      <% end %>
+    <%= form_with model: @schedule_summary, url: schedules_path do |form| %>
+      <%= form.text_field :name, placeholder: "プラン名", class:"form-group"%>
+      <%= form.text_field :password, placeholder: "編集時に必要になります", class:"form-group"%>
+    
+    <h1>概要</h1>
+      <%= form.text_field :title, placeholder: "例）持ち物・参加者名", class:"form-group"%>
+      <%= form.text_area :content, placeholder: "内容", class:"form-group"%>
+      <%= form.submit "概要追加", class:"form-group"%>
+    <% end %>
+
+    <h1>プラン</h1>
+    <%= form_with url:"#" do |form| %>
+      <%= form.date_field :hoge, placeholder: "", class:"form-group"%>
+      <%= form.time_field :hoge, placeholder: "", class:"form-group"%>
+      <%= form.text_field :hoge, placeholder: "タイトル", class:"form-group"%>
+      <%= form.text_area :hoge, placeholder: "説明", class:"form-group"%>
+      <%= form.submit "プラン追加", class:"form-group"%>
+    <% end %>
   </div>
 </div>

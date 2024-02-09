@@ -21,8 +21,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_06_063901) do
   create_table "summaries", charset: "utf8", force: :cascade do |t|
     t.string "title"
     t.string "content"
+    t.bigint "schedule_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["schedule_id"], name: "index_summaries_on_schedule_id"
   end
 
+  add_foreign_key "summaries", "schedules"
 end

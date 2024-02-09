@@ -1,0 +1,18 @@
+<div class="wrapper">
+  <div class="container">
+    <div id='schedule-new-btn' class='btn'>
+      <%= link_to "新規作成",new_schedule_path%>
+    </div>
+    <div>
+      <%= form_with(url: search_schedules_path, local: true, method: :get) do |f| %>
+        <%= f.text_field :name ,placeholder: "name" %>
+        <%= f.text_field :password ,placeholder: "password" %>
+      <% end %>
+      <div class="btn-group">
+        <%= link_to "編集",edit_schedule_path(13) %>
+        <%# edit_schedule_path(@schedule.id) %>
+        <%= link_to "印刷",'#' %>
+      </div>
+    </div>
+  </div>
+</div>

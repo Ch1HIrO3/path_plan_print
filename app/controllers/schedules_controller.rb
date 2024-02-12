@@ -1,6 +1,5 @@
 class SchedulesController < ApplicationController
-  before_action :set_schedule, only:[:edit]
-  # before_action :password, only:[:index]
+  # before_action :set_schedule, only:[:edit]
 
   def index
     @schedule = Schedule.all
@@ -19,38 +18,37 @@ class SchedulesController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-
+  
   def edit
-    # @schedule_summary = ScheduleSummary.find(schedule_params[:schedule_id])
+    @schedule = Schedule.find(params[:id])
   end
-
+  
   def search
-    @schedule = Schedule.search([params[:name], params[:password]])
+    @schedule = Schedule.search(params[:name], params[:password])
+    if @schedule.nil?
+      render :index
+    else
+      redirect_to edit_schedule_path(@schedule)
+    end
   end
 
   def update
-    schedule_summary = ScheduleSummary.find(params[:id])
-    schedule_summary.update(schedule_params)
+    @schedule = Schedule.find(params[:id])
+    if @schedule.update(schedule_params)
+      redirect_to schedules_path, notice: 'Schedule was successfully updated.'
+    else
+      render :edit
+    end
   end
   
   private
   
   def schedule_params
     params.require(:schedule_summary).permit(
-      :name, :password, :title, :content, :schedule_id)
+    :name, :password, :title, :content)
   end
 
   def set_schedule
     @schedule = Schedule.find(params[:id])
   end
-
-    # def password
-    #   @pass = [
-      #     [*0..9].sample(4),
-      #     [*'a'..'z'].sample(4),
-      #     [*'A'..'Z'].sample(4),
-      #     ['#', '?', '!', '@', '$', '%', '^', '&', '*', '-'].sample(4),
-      #   ].sum([]).shuffle.join
-      # end
-    end
-    
+end

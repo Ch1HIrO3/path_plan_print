@@ -24,10 +24,11 @@ class SchedulesController < ApplicationController
   
   def search
     @schedule = Schedule.search(params[:name], params[:password])
+    @schedule = Schedule.search(params[:name], params[:password]).first
     if @schedule.nil?
       render :index
     else
-      redirect_to edit_schedule_path(@schedule)
+      redirect_to edit_schedule_path(@schedule.id)
     end
   end
 

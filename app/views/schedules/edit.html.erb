@@ -1,7 +1,7 @@
 <div class="wrapper">
   <div class="container">
   <h1>schedule_edit</h1>
-    <%= form_with model: @schedule, url: schedule_path do |f| %>
+    <%= form_with model: @schedule_summary, url: schedule_path, method: :patch do |f| %>
       <%= f.text_field :name, class:"form-group"%>
       <%= f.text_field :password, class:"form-group"%>
     

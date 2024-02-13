@@ -1,5 +1,5 @@
 class SchedulesController < ApplicationController
-  # before_action :set_schedule, only:[:edit]
+  before_action :set_schedule, only:[:edit, :update]
 
   def index
     @schedule = Schedule.all
@@ -20,10 +20,13 @@ class SchedulesController < ApplicationController
   end
   
   def edit
+    schedule_attributes = @schedule.attributes
+    @schedule_summary = ScheduleSummary.new(schedule_attributes)
+    binding.pry
+    @schedule_summary.title = @schedule.title
   end
   
   def search
-    @schedule = Schedule.search(params[:name], params[:password])
     @schedule = Schedule.search(params[:name], params[:password]).first
     if @schedule.nil?
       render :index
@@ -33,11 +36,18 @@ class SchedulesController < ApplicationController
   end
 
   def update
-    @schedule = Schedule.find(params[:id])
-    if @schedule.update(schedule_params)
-      redirect_to schedules_path, notice: 'Schedule was successfully updated.'
+    # paramsの内容を反映したインスタンスを生成する
+    @schedule_summary = ScheduleSummary.new(schedule_params)
+    # @schedule_summary.name ||= @schedule.name.blob
+    # @schedule_summary.password ||= @schedule.password.blob
+    # @schedule_summary.title ||= @schedule.title.blob
+    # @schedule_summary.content ||= @schedule.content.blob
+
+    if @schedule_summary.valid?
+      @schedule_summary.update(schedule_params, @schedule)
+      render :edit, status: :unprocessable_entity
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
   

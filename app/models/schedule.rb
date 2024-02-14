@@ -1,9 +1,12 @@
 class Schedule < ApplicationRecord
-  def self.search(search)
-    if search != ""
+  def self.search(name, password)
+    if name.present? && password.present?
       Schedule.where(name: name, password: password)
     end
   end
+
+  has_many :summaries
+  accepts_nested_attributes_for :summaries
 end
 
 

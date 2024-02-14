@@ -4,6 +4,9 @@ class Schedule < ApplicationRecord
       Schedule.where(name: name, password: password)
     end
   end
+
+  has_many :summaries
+  accepts_nested_attributes_for :summaries
 end
 
 

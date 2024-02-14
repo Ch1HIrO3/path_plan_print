@@ -22,8 +22,6 @@ class SchedulesController < ApplicationController
   def edit
     schedule_attributes = @schedule.attributes
     @schedule_summary = ScheduleSummary.new(schedule_attributes)
-    binding.pry
-    @schedule_summary.title = @schedule.title
   end
   
   def search
@@ -36,26 +34,16 @@ class SchedulesController < ApplicationController
   end
 
   def update
-    # paramsの内容を反映したインスタンスを生成する
-    @schedule_summary = ScheduleSummary.new(schedule_params)
-    # @schedule_summary.name ||= @schedule.name.blob
-    # @schedule_summary.password ||= @schedule.password.blob
-    # @schedule_summary.title ||= @schedule.title.blob
-    # @schedule_summary.content ||= @schedule.content.blob
-
-    if @schedule_summary.valid?
-      @schedule_summary.update(schedule_params, @schedule)
-      render :edit, status: :unprocessable_entity
-    else
-      render :edit, status: :unprocessable_entity
-    end
+    schedule=Schedule.find(params[:id])
+    schedule.update(schedule_params)
   end
   
   private
   
   def schedule_params
-    params.require(:schedule_summary).permit(
-    :name, :password, :title, :content)
+    params.require(:schedule
+    ).permit(
+      :name, :password, summaries_attributes: [:id, :title, :content, :_destroy])
   end
 
   def set_schedule

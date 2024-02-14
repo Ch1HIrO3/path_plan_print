@@ -24,11 +24,12 @@
 .btn{
   width: 40%;
   margin: 10px auto;
+  height: 2rem;
 }
 
 .schedule_btn{
   width:40%;
-  height: 50px;
-  border-radius: 10px;
+  height: 3rem;
+  border-color: blue;
   margin: 0 auto;
 }

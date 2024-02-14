@@ -6,7 +6,8 @@ class SchedulesController < ApplicationController
   end
   
   def new
-    @schedule= Schedule.new
+    @schedule = Schedule.new
+    @schedule.summaries.build 
   end
   
   def create

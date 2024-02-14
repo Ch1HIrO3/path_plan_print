@@ -2,12 +2,14 @@
   <div class="container">
   <h1>schedule_new</h1>
     <%= form_with model:@schedule , url: schedules_path do |form| %>
+
+<%# 以下テンプレート予定＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊      %>
       <%= form.text_field :name, placeholder: "プラン名", class:"form-group"%>
       <%= form.text_field :password, placeholder: "編集時に必要になります", class:"form-group"%>
     <h1>概要</h1>
       <%= form.text_field :title, placeholder: "例）持ち物・参加者名", class:"form-group"%>
       <%= form.text_area :content, placeholder: "内容", class:"form-group"%>
-      <%= form.submit "概要追加", class:"form-group"%>
+      <%= form.submit "概要を追加", class:"form-group btn"%>
     <% end %>
 
     <h1>プラン</h1>
@@ -16,7 +18,10 @@
       <%= form.time_field :hoge, placeholder: "", class:"form-group"%>
       <%= form.text_field :hoge, placeholder: "タイトル", class:"form-group"%>
       <%= form.text_area :hoge, placeholder: "説明", class:"form-group"%>
-      <%= form.submit "プラン追加", class:"form-group"%>
+      <%= form.submit "プラン追加", class:"form-group btn"%>
+
+<%# 以上テンプレート予定＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊      %>
+      <%= form.submit "しおりを作成", class:"form-group schedule_btn"%>
     <% end %>
   </div>
 </div>

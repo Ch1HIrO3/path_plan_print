@@ -10,8 +10,6 @@ class SchedulesController < ApplicationController
   end
   
   def create
-    binding.pry
-
     @schedule = Schedule.new(schedule_params)
     if @schedule.valid?
       @schedule.save

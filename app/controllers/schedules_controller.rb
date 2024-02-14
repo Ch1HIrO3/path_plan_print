@@ -6,13 +6,15 @@ class SchedulesController < ApplicationController
   end
   
   def new
-    @schedule_summary = ScheduleSummary.new
+    @schedule= Schedule.new
   end
-
+  
   def create
-    @schedule_summary = ScheduleSummary.new(schedule_params)
-    if @schedule_summary.valid?
-      @schedule_summary.save
+    binding.pry
+
+    @schedule = Schedule.new(schedule_params)
+    if @schedule.valid?
+      @schedule.save
       redirect_to schedules_path
     else
       render :new, status: :unprocessable_entity
@@ -21,7 +23,7 @@ class SchedulesController < ApplicationController
   
   def edit
     schedule_attributes = @schedule.attributes
-    @schedule_summary = ScheduleSummary.new(schedule_attributes)
+    @schedule = Schedule.new(schedule_attributes)
   end
   
   def search
@@ -41,9 +43,11 @@ class SchedulesController < ApplicationController
   private
   
   def schedule_params
-    params.require(:schedule
-    ).permit(
-      :name, :password, summaries_attributes: [:id, :title, :content, :_destroy])
+    params.require(:schedule).permit(
+      :name,
+      :password,
+      summaries_attributes: [:id, :title, :content, :_destroy]
+      )
   end
 
   def set_schedule

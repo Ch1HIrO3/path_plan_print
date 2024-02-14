@@ -1,6 +1,7 @@
 <div class="wrapper">
   <div class="container">
-    <%= form_with model: @schedule_summary, url: schedules_path do |form| %>
+  <h1>schedule_new</h1>
+    <%= form_with model:@schedule , url: schedules_path do |form| %>
       <%= form.text_field :name, placeholder: "プラン名", class:"form-group"%>
       <%= form.text_field :password, placeholder: "編集時に必要になります", class:"form-group"%>
     <h1>概要</h1>

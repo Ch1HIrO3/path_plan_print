@@ -11,6 +11,7 @@ class SchedulesController < ApplicationController
   end
   
   def create
+    binding.pry
     @schedule = Schedule.new(schedule_params)
     if @schedule.valid?
       @schedule.save
@@ -46,8 +47,9 @@ class SchedulesController < ApplicationController
       :name,
       :password,
       summaries_attributes: [:id, :title, :content, :_destroy]
-      )
+    )
   end
+  
 
   def set_schedule
     @schedule = Schedule.find(params[:id])

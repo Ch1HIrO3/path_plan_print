@@ -2,23 +2,27 @@
   <div class="container">
   <h1>schedule_edit</h1>
   <%= form_with model: @schedule, url: schedule_path, method: :patch do |f| %>
+
+<%# 以下テンプレート予定＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊      %>
     <%= f.text_field :name, class: "form-group" %>
     <%= f.text_field :password, class: "form-group" %>
   <h1>概要</h1>
     <%= f.fields_for :summaries do |summary_form| %>
       <%= summary_form.text_field :title, class: "form-group" %>
       <%= summary_form.text_area :content, class: "form-group" %>
-      <%= f.submit "編集内容を保存", class: "form-group" %>
     <% end %>
-  <% end %>
+      <%= f.submit "概要を追加", class: "form-group btn" %>
 
     <h1>プラン</h1>
-    <%= form_with url:"#" do |f| %>
+    <%= f.fields_for :hoge do |hoge| %>
       <%= f.date_field :hoge, placeholder: "", class:"form-group"%>
       <%= f.time_field :hoge, placeholder: "", class:"form-group"%>
       <%= f.text_field :hoge, placeholder: "タイトル", class:"form-group"%>
       <%= f.text_area :hoge, placeholder: "説明", class:"form-group"%>
-      <%= f.submit "プラン追加", class:"form-group"%>
     <% end %>
+      <%= f.submit "プラン追加", class:"form-group btn"%>
+<%# 以上テンプレート予定＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊      %>
+      <%= f.submit "しおりを更新", class:"form-group schedule_btn"%>
+  <% end %>
   </div>
 </div>
